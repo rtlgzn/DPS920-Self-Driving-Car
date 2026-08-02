@@ -1,0 +1,12 @@
+numpy
+pandas
+matplotlib
+opencv-python
+scikit-learn
+tensorflow
+keras
+python-socketio==4.2.1
+python-engineio==3.8.2.post1
+eventlet
+Flask
+Pillow
