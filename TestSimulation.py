@@ -9,11 +9,22 @@ from flask import Flask
 import base64
 from io import BytesIO
 from PIL import Image
+from pathlib import Path
 import cv2
 
 sio = socketio.Server()
 app = Flask(__name__) #__main__
 maxSpeed = 10
+
+MODEL_PATH = Path("model.h5")
+
+if not MODEL_PATH.exists():
+    raise FileNotFoundError(
+        f"Trained model not found at {MODEL_PATH.resolve()}. "
+        "Place model.h5 in the project directory."
+    )
+
+model = load_model(MODEL_PATH)
 
 def preProcessing(img):
     img = img[60:135, :, :]
