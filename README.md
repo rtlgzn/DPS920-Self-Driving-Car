@@ -51,7 +51,7 @@ DPS920-Self-Driving-Car/
 The raw simulator dataset is not stored in the repository because it contains a large number of image files.
 
 
-```
+
 
 ## Dataset Collection
 
