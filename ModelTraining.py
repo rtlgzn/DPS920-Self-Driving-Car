@@ -17,6 +17,22 @@ BATCH_SIZE = 64
 EPOCHS = 20
 
 
+def validateDataFolder(data_folder):
+    csv_path = os.path.join(data_folder, 'driving_log.csv')
+    image_folder = os.path.join(data_folder, 'IMG')
+
+    if not os.path.isfile(csv_path):
+        raise FileNotFoundError(
+            f'Missing driving log: {csv_path}'
+        )
+
+    if not os.path.isdir(image_folder):
+        raise FileNotFoundError(
+            f'Missing image folder: {image_folder}'
+        )
+
+    print('Dataset structure verified.')
+
 def loadData(data_folder):
     columns = ['Center', 'Left', 'Right', 'Steering', 'Throttle', 'Brake', 'Speed']
     data = pd.read_csv(os.path.join(data_folder, 'driving_log.csv'), names=columns)
@@ -177,6 +193,8 @@ def createModel():
 
 if __name__ == '__main__':
     np.random.seed(42)
+    
+    validateDataFolder(DATA_FOLDER)
 
     data = loadData(DATA_FOLDER)
     data = balanceData(data)
