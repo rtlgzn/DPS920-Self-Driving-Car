@@ -32,7 +32,7 @@ def telemetry(sid, data):
     image = np.asarray(image)
     image = preProcessing(image)
     image = np.array([image])
-    steering = float(model.predict(image))
+    steering = float(model.predict(image, verbose=0)[0][0])
     throttle = 1.0 - speed/maxSpeed
     print(f'{throttle}, {steering}, {speed}')
     sendControl(steering, throttle)
