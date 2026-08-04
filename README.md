@@ -50,13 +50,7 @@ DPS920-Self-Driving-Car/
 
 The raw simulator dataset is not stored in the repository because it contains a large number of image files.
 
-To retrain the model, place the dataset in the following structure:
 
-```text
-data/
-├── driving_log.csv
-└── IMG/
-    ├── image files...
 ```
 
 ## Dataset Collection
